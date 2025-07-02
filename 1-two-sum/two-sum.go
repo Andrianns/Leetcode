@@ -1,22 +1,13 @@
 func twoSum(nums []int, target int) []int {
-    // Create a map to store the complement of each number
-    complementMap := make(map[int]int)
-    
-    // Loop through the array
+    numMap := make(map[int]int) // map[num] = index
+
     for i, num := range nums {
-        // Calculate the complement (what we need to add to num to reach target)
         complement := target - num
-        
-        // Check if the complement exists in the map
-        if index, found := complementMap[complement]; found {
-            // If found, return the indices
+        if index, found := numMap[complement]; found {
             return []int{index, i}
         }
-        
-        // If not found, add the current number and its index to the map
-        complementMap[num] = i
+        numMap[num] = i
     }
-    
-    // Return empty array if no solution found
-    return []int{}
+
+    return []int{} // jika tidak ada pasangan yang cocok
 }
